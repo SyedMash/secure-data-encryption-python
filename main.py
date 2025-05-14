@@ -7,15 +7,15 @@ import os
 import base64
 
 load_dotenv()
-supabase_url = os.getenv("SUPABASE_URL")
-supabase_key = os.getenv("SUPABASE_KEY")
+supabase_url = st.secrets("SUPABASE_URL")
+supabase_key = st.secrets("SUPABASE_KEY")
 supabase: Client = create_client(supabase_url, supabase_key)
 
 st.title("🏠 Secure Data encryption")
 
 
 def main():
-    MASTER_KEY = os.getenv("MASTER_KEY")
+    MASTER_KEY = st.secrets("MASTER_KEY")
     KEY = base64.urlsafe_b64encode(hashlib.sha256(MASTER_KEY.encode()).digest())
     cipher = Fernet(KEY)
 
