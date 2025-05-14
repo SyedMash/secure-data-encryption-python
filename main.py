@@ -1,6 +1,5 @@
 import hashlib
 import streamlit as st
-from auth import auth, sign_out
 from cryptography.fernet import Fernet
 from supabase import create_client, Client
 from dotenv import load_dotenv
